@@ -58,6 +58,10 @@ $countCommunes = $geo->countCommunes('Atlantique');
 
 // Obtenir le nombre total de communes au Bénin
 $totalCommunes = $geo->countTotalCommunes();
+
+
+// Obtenir toutes les communes groupées par département
+$groupedCommunes = $geo->allCommunesGrouped();
 ```
 
 ### Utilisation avec l'injection de dépendances
