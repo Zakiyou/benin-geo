@@ -10,12 +10,10 @@ Un package Laravel simple et efficace qui fournit l'accès complet aux données 
 - [Fonctionnalités](#-fonctionnalités)
 - [Installation](#-installation)
 - [Utilisation](#-utilisation)
-- [Exemples avancés](#-exemples-avancés)
-- [Gestion des erreurs](#-gestion-des-erreurs)
-- [Tests](#-tests)
+- [Gestion des erreurs](#gestion-des-erreurs)
 - [Compatibilité](#-compatibilité)
 - [Contribution](#-contribution)
-- [Licence](#-licence
+- [Licence](#-licence)
 - [Auteur](#-auteur)
 
 ## ✨ Fonctionnalités
@@ -88,89 +86,11 @@ class LocationController extends Controller
         return response()->json($communes);
     }
 }
-```
-## 🎯 Exemples avancés
 
-### Création d'un formulaire de sélection en cascade
 
-```php
-<?php
-
-// Controller
-public function getLocationData(BeninGeo $geo)
-{
-    $departments = $geo->departments();
-    $locationData = [];
-    
-    foreach ($departments as $department) {
-        $locationData[$department] = [
-            'communes' => $geo->communes($department),
-            'count' => $geo->countCommunes($department)
-        ];
-    }
-    
-    return response()->json($locationData);
-}
 ```
 
-### Validation des données géographiques
-
-```php
-<?php
-
-use Illuminate\Http\Request;
-use Zakiyou\BeninGeo\BeninGeo;
-use Zakiyou\BeninGeo\DepartmentNotFoundException;
-
-public function validateLocation(Request $request, BeninGeo $geo)
-{
-    $department = $request->input('department');
-    $commune = $request->input('commune');
-    
-    try {
-        $communes = $geo->communes($department);
-        
-        if (!in_array($commune, $communes)) {
-            return response()->json([
-                'error' => 'La commune spécifiée n\'existe pas dans ce département.'
-            ], 400);
-        }
-        
-        return response()->json(['valid' => true]);
-        
-    } catch (DepartmentNotFoundException $e) {
-        return response()->json([
-            'error' => 'Département invalide : ' . $e->getMessage()
-        ], 400);
-    }
-}
-```
-
-### Statistiques géographiques
-
-```php
-<?php
-
-public function getStatistics(BeninGeo $geo)
-{
-    $statistics = [
-        'total_departments' => $geo->countDepartments(),
-        'total_communes' => $geo->countTotalCommunes(),
-        'departments_details' => []
-    ];
-    
-    foreach ($geo->departments() as $department) {
-        $statistics['departments_details'][$department] = [
-            'communes_count' => $geo->countCommunes($department),
-            'communes_list' => $geo->communes($department)
-        ];
-    }
-    
-    return response()->json($statistics);
-}
-```
-
-## 🛡️ Gestion des erreurs
+##  Gestion des erreurs
 
 Le package utilise une exception personnalisée pour gérer les départements inexistants :
 
@@ -222,7 +142,7 @@ Les contributions sont les bienvenues ! Voici comment contribuer :
 
 ## 📄 Licence
 
-Ce package est sous licence **MIT**. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
+Ce package est sous licence **MIT**. Voir le fichier LICENSE pour plus de détails.
 
 ## 👨‍💻 Auteur
 
