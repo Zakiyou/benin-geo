@@ -132,17 +132,7 @@ try {
 
 ## 🤝 Contribution
 
-Les contributions sont les bienvenues ! Voici comment contribuer :
-
-
-
-## 📋 Roadmap
-
-- [ ] Ajout des arrondissements pour chaque commune
-- [ ] Support des coordonnées géographiques
-- [ ] API pour les codes postaux
-- [ ] Interface en ligne pour explorer les données
-- [ ] Export des données en différents formats (JSON, CSV, XML)
+Les contributions sont les bienvenues !
 
 ## 📄 Licence
 
