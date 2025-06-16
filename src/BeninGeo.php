@@ -96,4 +96,20 @@ class BeninGeo
         }
         return $total;
     }
+
+        /**
+     * Retourne toutes les communes groupées par département
+     * avec les départements en première lettre majuscule
+     * 
+     * @return array
+     */
+    public function allCommunesGrouped(): array
+    {
+        $result = [];
+        foreach ($this->communes as $depKey => $communes) {
+            $depFormatted = ucfirst($depKey);
+            $result[$depFormatted] = $communes;
+        }
+        return $result;
+    }
 }
